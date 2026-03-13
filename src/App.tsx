@@ -1,10 +1,11 @@
 import './App.css'
+import Cart from './componenet/Cart'
 
 function App() {
 
   return (
     <>
-      <h1>React Interview Kit</h1>
+      <Cart/>
     </>
   )
 }
