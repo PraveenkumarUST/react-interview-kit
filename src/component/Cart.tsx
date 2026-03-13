@@ -16,12 +16,8 @@ export default function Cart() {
     setCart(prev => addItem(prev, item))
   }
 
-  const increase = (id: number) => {
-    setCart(prev => updateQuantity(prev, id, 1))
-  }
-
-  const decrease = (id: number) => {
-    setCart(prev => updateQuantity(prev, id, -1))
+  const changeQuality = (id:number, amount: number) => {
+    setCart(prev => updateQuantity(prev, id, amount))
   }
 
   const remove = (id: number) => {
@@ -34,7 +30,7 @@ export default function Cart() {
             <h2>Products</h2>
             <div className="items_outer_wrap">
                 {sampleItems.map(item => (
-                    <div className="item_inner_wrap" key={item.id}>
+                    <div className="item_inner_wrap" key={`product-${item.id}`}>
                     {item.name} - ${item.price}
                     <button onClick={() => handleAdd(item)}>Add</button>
                     </div>
@@ -47,14 +43,14 @@ export default function Cart() {
 
                 <div className="cart_outer_wrap">
                 {cart.map(item => (
-                    <div className="cart_inner_wrap" key={item.id}>
+                    <div className="cart_inner_wrap" key={`cart-${item.id}`}>
                     <h4>{item.name} - ${item.price}</h4>
 
-                    <button onClick={() => decrease(item.id)}>-</button>
+                    <button onClick={() => changeQuality(item.id, -1)}>-</button>
 
                     <h6>{item.quantity}</h6>
 
-                    <button onClick={() => increase(item.id)}>+</button>
+                    <button onClick={() => changeQuality(item.id, 1)}>+</button>
 
                     <button onClick={() => remove(item.id)}>Remove</button>
                     </div>

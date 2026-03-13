@@ -1,5 +1,5 @@
 import './App.css'
-import Cart from './componenet/Cart'
+import Cart from './component/Cart'
 
 function App() {
 
